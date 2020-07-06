@@ -6,6 +6,7 @@ class Game extends React.Component {
     super(props);
     this.init = this.init.bind(this);
     this.addGo = this.addGo.bind(this);
+    this.blackStone = true;
   }
 
   componentDidMount() {
@@ -35,19 +36,24 @@ class Game extends React.Component {
   }
 
   addGo(event){
-
     // calculating exact mouse coordinates
     this.rect.x = event.pageX - this.goBoardX - 1.2;
     this.rect.y = event.pageY - this.goBoardY - 2;
 
     // draw stones based on current mouse position
     this.context.beginPath();
-    this.context.arc(this.rect.x, this.rect.y, 25, 0, 2*Math.PI);
+    this.context.arc(this.rect.x, this.rect.y, 25, 0, 2 * Math.PI);
 
     // fill the color of stone
-    this.context.fillStyle="black";
+    if (this.blackStone == true) {
+      this.context.fillStyle = "black";
+      this.blackStone = false;
+    } else {
+      this.context.fillStyle = "white";
+      this.blackStone = true;
+    }
+    
     this.context.fill();
-
     this.context.stroke();
   }
 
