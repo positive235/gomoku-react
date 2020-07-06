@@ -2,13 +2,6 @@
 
 This is a traditional Gomoku game(five-in-a-row) played by 2 players. 
 
-```
-Gomoku from wiki: Gomoku, also called Five in a Row, is an abstract strategy board game. 
-Players alternate turns placing a stone of their color on an empty section. 
-The winner is the first player to form an unbroken chain of five stones 
-horizontally, vertically, or diagonally. 
-(Reference: https://en.wikipedia.org/wiki/Gomoku)
-```
 
 ## Tutorial: GOMOKU in React JS
 
