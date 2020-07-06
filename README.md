@@ -172,8 +172,8 @@ init() {
 ```
 addGo(event){
   // calculating exact mouse coordinates
-  this.rect.x = event.pageX - this.goBoardX- 1.2;
-  this.rect.y = event.pageY - this.goBoardY- 2;
+  this.rect.x = event.pageX - this.goBoardX - 1.2;
+  this.rect.y = event.pageY - this.goBoardY - 2;
   console.log(this.rect.x, this.rect.y);
 }
 ```

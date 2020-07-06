@@ -37,8 +37,8 @@ class Game extends React.Component {
   addGo(event){
 
     // calculating exact mouse coordinates
-    this.rect.x = event.pageX - this.goBoardX- 1.2;
-    this.rect.y = event.pageY - this.goBoardY- 2;
+    this.rect.x = event.pageX - this.goBoardX - 1.2;
+    this.rect.y = event.pageY - this.goBoardY - 2;
 
     // draw stones based on current mouse position
     this.context.beginPath();
