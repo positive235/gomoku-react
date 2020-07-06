@@ -23,7 +23,6 @@ body {
 .game {
   display: flex;
   flex-direction: column;
-  /* background-color: goldenrod; */
   padding: 60px 0;
 }
 
