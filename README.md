@@ -116,11 +116,11 @@ body {
     this.context = this.goBoard.getContext('2d');
 
     // draw multiple lines for go board
-    for (let i= 0; i < 15; i++) {
-      this.context.moveTo(0, 50*i);
-      this.context.lineTo(700, 50*i);
-      this.context.moveTo(50*i, 0);
-      this.context.lineTo(50*i, 700);
+    for (let i = 0; i < 15; i++) {
+      this.context.moveTo(0, 50 * i);
+      this.context.lineTo(700, 50 * i);
+      this.context.moveTo(50 * i, 0);
+      this.context.lineTo(50 * i, 700);
     }
     this.context.stroke();
   }
