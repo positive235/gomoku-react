@@ -4,11 +4,18 @@ class Game extends React.Component {
 
   constructor(props) {
     super(props);
-    this.init = this.init.bind(this);
-    this.addGo = this.addGo.bind(this);
-    this.blackStone = true;
+
+    // stone info: radius, diameter
     this.stoneRadius = 25;
     this.stoneDiameter = this.stoneRadius * 2;
+    
+    // functions
+    this.init = this.init.bind(this);
+    this.addGo = this.addGo.bind(this);
+    
+    // game state
+    this.history = [];
+    this.blackStone = true;
   }
 
   componentDidMount() {
@@ -58,22 +65,38 @@ class Game extends React.Component {
     // put stones only if they are not on the edges
     if (this.rect.x > 0 && this.rect.x < 700
       && this.rect.y > 0 && this.rect.y < 700) {
+      
+      // not to put stones at the place where the stone is already placed
+      this.placed = false;      
 
-      // put stones based on thier calculated coordinates
-      this.context.beginPath();
-      this.context.arc(this.rect.x, this.rect.y, this.stoneRadius, 0, 2 * Math.PI);
-
-      // fill the color of stone:  black or white
-      if (this.blackStone === true) {
-        this.context.fillStyle = "black";
-        this.blackStone = false;
-      } else {
-        this.context.fillStyle = "white";
-        this.blackStone = true;
+      for (let i = 0; i < this.history.length; i++) {
+        if (this.history[i].x === this.rect.x && this.history[i].y === this.rect.y){
+          this.placed = true;
+        }
       }
 
-      this.context.fill();
-      this.context.stroke();
+      if (this.placed === true) {
+        console.log("don't overwrite");
+      } else {
+        // record game history
+        this.history.push({x: this.rect.x, y: this.rect.y});
+
+        // draw stones based on thier calculated coordinates
+        this.context.beginPath();
+        this.context.arc(this.rect.x, this.rect.y, this.stoneRadius, 0, 2 * Math.PI);
+      
+        // fill the color of stone:  black or white
+        if (this.blackStone === true) {
+          this.context.fillStyle = "black";
+          this.blackStone = false;
+        } else {
+          this.context.fillStyle = "white";
+          this.blackStone = true;
+        }
+
+        this.context.fill();
+        this.context.stroke();
+      }
     } 
   }
 
