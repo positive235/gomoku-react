@@ -1,0 +1,37 @@
+body {
+  font: 35px "Century Gothic", Futura, sans-serif;
+  margin: 35px;
+  text-align: center;
+  background-color: goldenrod;
+  background-image: linear-gradient(rgb(238, 250, 2),goldenrod);
+}
+
+/* text(headline) "GOMOKU" on the page */
+#go {
+  color: rgb(9, 9, 109);
+}
+
+#mo {
+  color: rgb(143, 92, 142);
+}
+
+#ku {
+  color: green;
+}
+
+/* gomoku board */
+.game {
+  display: flex;
+  flex-direction: column;
+  /* background-color: goldenrod; */
+  padding: 60px 0;
+}
+
+.game-board {
+  margin: 0 auto;
+}
+
+/* gomoku board to play */
+#goBoard {
+  border: 2px solid black;
+}
