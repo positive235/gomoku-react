@@ -1,9 +1,19 @@
-# GOMOKU in React JS (IN PROGRESS)
+# GOMOKU in React JS
 
-This is a traditional Gomoku game(five-in-a-row) played by 2 players. 
+This is a personal project: Traditional Gomoku game(five-in-a-row) played by 2 players. 
 
+## How to run
 
-## Tutorial: GOMOKU in React JS
+```
+cd gomoku-react
+cd gomoku
+npm i
+npm start
+```
+
+## Screenshot
+
+## Tutorial: GOMOKU in React JS (Writing in Progress)
 
 ### Setup for the tutorial (reference: https://reactjs.org/tutorial/tutorial.html)
 
