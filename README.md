@@ -191,5 +191,3 @@ addGo(event){
 ```
 </p>
 </details>
-
-(In Progress...)
