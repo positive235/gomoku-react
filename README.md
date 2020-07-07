@@ -13,6 +13,8 @@ npm start
 
 ## Screenshot
 
+![gomoku-react](https://github.com/positive235/gomoku-react/blob/master/img-readme/gomokureact.png?raw=true)
+
 ## Tutorial: GOMOKU in React JS (Writing in Progress)
 
 ### Setup for the tutorial (reference: https://reactjs.org/tutorial/tutorial.html)
