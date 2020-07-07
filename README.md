@@ -17,11 +17,12 @@ npm start
 
 ## Tutorial: GOMOKU in React JS (Writing in Progress)
 
-### Setup for the tutorial (reference: https://reactjs.org/tutorial/tutorial.html)
+### Setup for the tutorial
 
 <details><summary>CLICK TO SEE THE DETAILS</summary>
 <p>
-  
+(reference: https://reactjs.org/tutorial/tutorial.html)
+
 1. Make sure you have a recent version of Node.js installed.
 2. Install Create React App to make a new project. In terminal, `npx create-react-app my-app`
 3. Delete all files in the `src/` folder of the new project. (Note: Don't delete the entire src folder, just the original source files inside it).
