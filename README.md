@@ -2,6 +2,10 @@
 
 This is a personal project: Traditional Gomoku game(five-in-a-row) played by 2 players. 
 
+## Where to try
+
+https://positive235.github.io/gomoku-react/
+
 ## How to run
 
 ```
