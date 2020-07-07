@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Game extends React.Component {
-
+  
   constructor(props) {
     super(props);
 
@@ -15,42 +15,47 @@ class Game extends React.Component {
     
     // game state
     this.history = [];
-    this.blackStone = true;
-    this.gameOver = false;
-    this.gameState = "None"; // Win, Lose, Draw
+    this.state = {
+      blackStone: true,
+      gameOver: false,
+      gameState: 'Next: Black Stone *'
+    };
   }
 
   componentDidMount() {
-    this.goBoard = document.getElementById('goBoard');
-    this.context = this.goBoard.getContext('2d');
-
+    var goBoard = document.getElementById('goBoard');
+    var context = goBoard.getContext('2d');
+    
     // draw multiple lines for go board
     for (let i = 0; i < 15; i++) {
-      this.context.moveTo(0, 50 * i);
-      this.context.lineTo(700, 50 * i);
-      this.context.moveTo(50 * i, 0);
-      this.context.lineTo(50 * i, 700);
+      context.moveTo(0, 50 * i);
+      context.lineTo(700, 50 * i);
+      context.moveTo(50 * i, 0);
+      context.lineTo(50 * i, 700);
     }
-    this.context.stroke();
+    context.stroke();
 
     // for mouse coordinate
     this.rect = {};
-    this.goBoardX = this.goBoard.offsetLeft;
-    this.goBoardY = this.goBoard.offsetTop;
+    this.goBoardX = goBoard.offsetLeft;
+    this.goBoardY = goBoard.offsetTop;
 
     this.init();
   }
 
   init() {
+    var goBoard = document.getElementById('goBoard');
     //when clicking the board, a stone will be added to the board
-    this.goBoard.addEventListener('mousedown', this.addGo, false);
+    goBoard.addEventListener('mousedown', this.addGo, false);
   }
 
   gameScore(isPlayerOne) {
     // draw
-    if (this.history.length === 13*13) {
-      this.gameState = "Draw";
-      this.gameOver = true;
+    if (this.history.length === 13 * 13) {
+      this.setState({
+        gameOver: true,
+        gameState: 'Draw!'
+      })
       return;
     }
     // sort history by stone's color
@@ -94,17 +99,22 @@ class Game extends React.Component {
           }
 
           if (cntA === 5 || cntB === 5 || cntC === 5) {
-            this.gameOver = true;
             if (isPlayerOne === true) {
-              this.gameState = "Black Stone Win!"
+              this.setState({
+                gameOver: true,
+                gameState: "Black Stone Win!"
+              })
             } else {
-              this.gameState = "White Stone Win!"
+              this.setState({
+                gameOver: true,
+                gameState: "White Stone Win!"
+              })
             }
           }
         }
       }
 
-      if (this.gameOver === false) {
+      if (this.state.gameOver === false) {
         // sort history by y
         this.sortStone.sort((a, b) => {
           if (a.y > b.y) return 1;
@@ -123,11 +133,16 @@ class Game extends React.Component {
                 // y increases
                 cnt += 1;
                 if (cnt === 5) {
-                  this.gameOver = true;
                   if (isPlayerOne === true) {
-                    this.gameState = "Black Stone Win!"
+                    this.setState({
+                      gameOver: true,
+                      gameState: "Black Stone Win!"
+                    });
                   } else {
-                    this.gameState = "White Stone Win!"
+                    this.setState({
+                      gameOver: true,
+                      gameState: "White Stone Win!"
+                    });
                   }
                 }
               }
@@ -157,7 +172,7 @@ class Game extends React.Component {
     }
 
     // put stones only if they are not on the edges
-    if (this.gameOver === false) {
+    if (this.state.gameOver === false) {
       if (this.rect.x > 0 && this.rect.x < 700
         && this.rect.y > 0 && this.rect.y < 700) {
         
@@ -175,26 +190,36 @@ class Game extends React.Component {
           console.log("don't overwrite");
   
         } else {
+          var goBoard = document.getElementById('goBoard');
+          var context = goBoard.getContext('2d');
           // record game history
-          this.history.push({x: this.rect.x, y: this.rect.y, isBlackStone: this.blackStone});
+          this.history.push({x: this.rect.x, y: this.rect.y, isBlackStone: this.state.blackStone});
   
           // draw stones based on thier calculated coordinates
-          this.context.beginPath();
-          this.context.arc(this.rect.x, this.rect.y, this.stoneRadius, 0, 2 * Math.PI);
-        
+          context.beginPath();
+          context.arc(this.rect.x, this.rect.y, this.stoneRadius, 0, 2 * Math.PI);
+
           // fill the color of stone:  black or white
-          if (this.blackStone === true) {
-            this.context.fillStyle = "black";
-            this.blackStone = false;
+          if (this.state.blackStone === true) {
+            context.fillStyle = "black";
+            context.fill();
+            context.stroke();
+            this.setState({
+              blackStone: false,
+              gameState: 'Next: ' + (this.state.blackStone ? 'White Stone' : 'Black Stone *')
+            });
           } else {
-            this.context.fillStyle = "white";
-            this.blackStone = true;
+            context.fillStyle = "white";
+            context.fill();
+            context.stroke();
+            this.setState({
+              blackStone: true,
+              gameState: 'Next: ' + (this.state.blackStone ? 'White Stone' : 'Black Stone *')
+            });
           }
-          this.context.fill();
-          this.context.stroke();
 
           this.gameScore(true); // Player One (Black Stone) Score
-          if (this.gameOver === false) {
+          if (this.state.gameOver === false) {
             this.gameScore(false); // Player Two (White Stone) Score
           }
         }
@@ -206,6 +231,9 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
+          <div className="status-txt">
+              {this.state.gameState}
+          </div>
           <canvas id="goBoard" width="700" height="700" />
         </div>
       </div>
