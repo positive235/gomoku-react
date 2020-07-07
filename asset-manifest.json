@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/gomoku-react/static/css/main.898bab81.chunk.css",
+    "main.js": "/gomoku-react/static/js/main.a98a5b0f.chunk.js",
+    "main.js.map": "/gomoku-react/static/js/main.a98a5b0f.chunk.js.map",
+    "runtime-main.js": "/gomoku-react/static/js/runtime-main.8ab5e4e7.js",
+    "runtime-main.js.map": "/gomoku-react/static/js/runtime-main.8ab5e4e7.js.map",
+    "static/js/2.c13d6821.chunk.js": "/gomoku-react/static/js/2.c13d6821.chunk.js",
+    "static/js/2.c13d6821.chunk.js.map": "/gomoku-react/static/js/2.c13d6821.chunk.js.map",
+    "index.html": "/gomoku-react/index.html",
+    "precache-manifest.ae562f17c7a1072082a8e1e18fc71364.js": "/gomoku-react/precache-manifest.ae562f17c7a1072082a8e1e18fc71364.js",
+    "service-worker.js": "/gomoku-react/service-worker.js",
+    "static/css/main.898bab81.chunk.css.map": "/gomoku-react/static/css/main.898bab81.chunk.css.map",
+    "static/js/2.c13d6821.chunk.js.LICENSE.txt": "/gomoku-react/static/js/2.c13d6821.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8ab5e4e7.js",
+    "static/js/2.c13d6821.chunk.js",
+    "static/css/main.898bab81.chunk.css",
+    "static/js/main.a98a5b0f.chunk.js"
+  ]
+}
