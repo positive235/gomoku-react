@@ -165,6 +165,7 @@ class Game extends React.Component {
 1. Add these lines to `constructor(props){...}` in `class Game extends React.Component {...}` in the `Game.js` in the `src/` folder:	
 
 ```	
+// functions
 this.init = this.init.bind(this);	
 this.addGo = this.addGo.bind(this);	
 ```	
@@ -172,17 +173,22 @@ this.addGo = this.addGo.bind(this);
 2. Add these lines to `componentDidMount(){...}` in `class Game extends React.Component{...}` in the `Game.js` in the `src/` folder:	
 
 ```	
-this.rect = {};	
-this.goBoardX = this.goBoard.offsetLeft;	
-this.goBoardY = this.goBoard.offsetTop;	
+// for mouse coordinate
+this.rect = {};
+this.goBoardX = goBoard.offsetLeft;
+this.goBoardY = goBoard.offsetTop;
+
 this.init();	
 ```	
 
 3. Add these lines to `class Game extends React.Component{...}` in the `Game.js` in the `src/` folder:	
 
 ```	
-init() {	
-  this.goBoard.addEventListener('mousedown', this.addGo, false);	
+init() {
+  var goBoard = document.getElementById('goBoard');
+  
+  //when clicking the board, a stone will be added to the board
+  goBoard.addEventListener('mousedown', this.addGo, false);
 }	
 ```	
 
@@ -190,10 +196,9 @@ init() {
 
 ```	
 addGo(event){	
-  // calculating exact mouse coordinates	
-  this.rect.x = event.pageX - this.goBoardX - 1.2;	
-  this.rect.y = event.pageY - this.goBoardY - 2;	
-  console.log(this.rect.x, this.rect.y);	
+  // calculating exact mouse coordinates
+  this.rect.x = event.pageX - this.goBoardX - 1;
+  this.rect.y = event.pageY - this.goBoardY - 2;
 }	
 ```	
 </p>	
