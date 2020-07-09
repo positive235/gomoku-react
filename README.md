@@ -132,16 +132,17 @@ body {
 1. Add these lines to `Game.js` in the `src/` folder:	
 ```	
   componentDidMount() {	
-    this.goBoard = document.getElementById('goBoard');	
-    this.context = this.goBoard.getContext('2d');	
+    var goBoard = document.getElementById('goBoard');	
+    var context = this.goBoard.getContext('2d');	
+    
     // draw multiple lines for go board	
     for (let i = 0; i < 15; i++) {	
-      this.context.moveTo(0, 50 * i);	
-      this.context.lineTo(700, 50 * i);	
-      this.context.moveTo(50 * i, 0);	
-      this.context.lineTo(50 * i, 700);	
+      context.moveTo(0, 50 * i);	
+      context.lineTo(700, 50 * i);	
+      context.moveTo(50 * i, 0);	
+      context.lineTo(50 * i, 700);	
     }	
-    this.context.stroke();	
+    context.stroke();	
   }	
 ```	
 
