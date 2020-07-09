@@ -133,7 +133,7 @@ body {
 ```	
   componentDidMount() {	
     var goBoard = document.getElementById('goBoard');	
-    var context = this.goBoard.getContext('2d');	
+    var context = goBoard.getContext('2d');	
     
     // draw multiple lines for go board	
     for (let i = 0; i < 15; i++) {	
