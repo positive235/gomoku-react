@@ -39,12 +39,12 @@ npm start
 
 10. Add these lines to the top of `index.js` in the `src/` folder:	
 
-```	
+```
 import React from 'react';	
 import ReactDOM from 'react-dom';	
 import Game from './Game';	
 import './index.css';	
-```	
+```
 
 11. Now if you run `npm start` in the project folder and open `http://localhost:3000` in the browser, you should see an empty gomoku field.	
 
@@ -88,26 +88,35 @@ export default Game;
 3. Add these lines to the top of `index.css` in the `src/` folder:	
 
 ```	
-body {	
-  font: 35px "Century Gothic", Futura, sans-serif;	
-  margin: 35px;	
-  text-align: center;	
-  background-color: goldenrod;	
-  background-image: linear-gradient(rgb(238, 250, 2),goldenrod);	
-}	
-/* gomoku board */	
-.game {	
-  display: flex;	
-  flex-direction: column;	
-  padding: 60px 0;	
-}	
-.game-board {	
-  margin: 0 auto;	
-}	
-/* gomoku board to play */	
-#goBoard {	
-  border: 2px solid black;	
-}	
+body {
+  font: 35px "Century Gothic", Futura, sans-serif;
+  margin: 30px 0;
+  text-align: center;
+  background-color: rgb(218, 179, 79);
+}
+
+/* game status text*/
+.status-txt {
+  color: black;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* gomoku board */
+.game {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.game-board {
+  margin: 0 auto;
+}
+
+/* gomoku board to play */
+#goBoard {
+  border: 2px solid black;
+}
 ```	
 </p>	
 </details>	
