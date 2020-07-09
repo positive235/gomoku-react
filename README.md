@@ -200,6 +200,67 @@ addGo(event){
   this.rect.x = event.pageX - this.goBoardX - 1;
   this.rect.y = event.pageY - this.goBoardY - 2;
 }	
-```	
+```
+
+5. Then `Game.js` in the `src/` folder should be like this:
+
+```
+import React from 'react';
+
+class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.init = this.init.bind(this);	
+    this.addGo = this.addGo.bind(this);
+  }
+
+  componentDidMount() {	
+    var goBoard = document.getElementById('goBoard');	
+    var context = goBoard.getContext('2d');	
+    
+    // draw multiple lines for go board	
+    for (let i = 0; i < 15; i++) {	
+      context.moveTo(0, 50 * i);	
+      context.lineTo(700, 50 * i);	
+      context.moveTo(50 * i, 0);	
+      context.lineTo(50 * i, 700);	
+    }	
+    context.stroke();
+    
+    // for mouse coordinate
+    this.rect = {};
+    this.goBoardX = goBoard.offsetLeft;
+    this.goBoardY = goBoard.offsetTop;
+
+    this.init();
+  }	
+
+  init() {
+    var goBoard = document.getElementById('goBoard');
+    
+    //when clicking the board, a stone will be added to the board
+    goBoard.addEventListener('mousedown', this.addGo, false);
+  }	
+
+  addGo(event){	
+    // calculating exact mouse coordinates
+    this.rect.x = event.pageX - this.goBoardX - 1;
+    this.rect.y = event.pageY - this.goBoardY - 2;
+  }	
+  
+  render() {
+    return (
+      <div className="game">
+        <div className="game-board">
+          <canvas id="goBoard" width="700" height="700" />
+        </div>
+      </div>
+    );
+  }
+} 
+
+export default Game;
+```
+
 </p>	
 </details>
