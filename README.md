@@ -110,7 +110,7 @@ export default Game;
 
 3. Add these lines to the top of `index.css` in the `src/` folder:	
 
-```js	
+```css	
 body {
   font: 35px "Century Gothic", Futura, sans-serif;
   margin: 30px 0;
