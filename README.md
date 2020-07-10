@@ -8,7 +8,7 @@ https://positive235.github.io/gomoku-react/
 
 ## How to run
 
-```
+```bash
 cd gomoku-react
 cd gomoku
 npm i
@@ -28,36 +28,59 @@ npm start
 (reference: https://reactjs.org/tutorial/tutorial.html)	
 
 1. Make sure you have a recent version of Node.js installed.	
-2. Install Create React App to make a new project. In terminal, `npx create-react-app my-app`	
-3. Delete all files in the `src/` folder of the new project. (Note: Don't delete the entire src folder, just the original source files inside it).	
-
-4. `cd my-app`	
-5. `cd src`	
-6. If you are using Mac or Linux: `rm -f *` / Or, if you're on Windows: `del *`	
-8. Then, switch back to the project folder: `cd ..`	
-9. Add three files named `index.css`, `index.js`, `Game.js` in the `src/` folder.	
-
-10. Add these lines to the top of `index.js` in the `src/` folder:	
-
+2. Install Create React App to make a new project. In terminal, 
+```bash
+npx create-react-app my-app
 ```
+
+3. Delete all files in the `src/` folder of the new project. (**`Note: Don't delete the entire src folder, just the original source files inside it`**).	
+
+4. In terminal, 
+
+```bash
+cd my-app	
+cd src
+```
+
+5. If you are using Mac or Linux: 
+```bash
+rm -f *
+```
+
+   Or, if you're on Windows: 
+```bash
+del *
+```
+
+6. Then, switch back to the project folder. In Terminal, 
+```bash
+cd ..
+```
+
+7. Add three files named `index.css`, `index.js`, `Game.js` in the `src/` folder.	
+
+8. Add these lines to the top of `index.js` in the `src/` folder:	
+
+```js
 import React from 'react';	
 import ReactDOM from 'react-dom';	
 import Game from './Game';	
 import './index.css';	
 ```
 
-11. Now if you run `npm start` in the project folder and open `http://localhost:3000` in the browser, you should see an empty gomoku field.	
+9. Now if you run `npm start` in the project folder and open `http://localhost:3000` in the browser, you should see an empty gomoku field.	
 
 </p>	
 </details>	
 
-### Starter Code	
+### Starter Code
+
 <details><summary>CLICK TO SEE THE DETAILS</summary>	
 <p>	
 
 1. Add these lines to `index.js` in the `src/` folder:	
 
-```	
+```js	
 ReactDOM.render(	
   <Game />,	
   document.getElementById('root')	
@@ -66,7 +89,7 @@ ReactDOM.render(
 
 2. Add these lines to the top of `Game.js` in the `src/` folder:	
 
-```	
+```js	
 import React from 'react';	
 class Game extends React.Component {	
   constructor(props) {	
@@ -87,7 +110,7 @@ export default Game;
 
 3. Add these lines to the top of `index.css` in the `src/` folder:	
 
-```	
+```js	
 body {
   font: 35px "Century Gothic", Futura, sans-serif;
   margin: 30px 0;
@@ -122,6 +145,7 @@ body {
 </details>	
 
 ### Making a Board - (draw lines on the board)	
+
 <details><summary>CLICK TO SEE THE DETAILS</summary>	
 <p>	
 
@@ -130,7 +154,8 @@ body {
 (Reference: https://reactjs.org/docs/react-component.html#componentdidmount)	
 
 1. Add these lines to `Game.js` in the `src/` folder:	
-```	
+
+```js	
   componentDidMount() {	
     var goBoard = document.getElementById('goBoard');	
     var context = goBoard.getContext('2d');	
@@ -148,7 +173,7 @@ body {
 
 2. Then `Game.js` structures should be like this:	
 
-```	
+```js	
 class Game extends React.Component {	
   constructor(props) {...}	
   componentDidMount() {...}	
@@ -158,13 +183,14 @@ class Game extends React.Component {
 </p>	
 </details>	
 
-### Getting current mouse coordinates when the user clicks	
+### Getting current mouse coordinates when the user clicks
+
 <details><summary>CLICK TO SEE THE DETAILS</summary>	
 <p>	
 
 1. Add these lines to `constructor(props){...}` in `class Game extends React.Component {...}` in the `Game.js` in the `src/` folder:	
 
-```	
+```js	
 // functions
 this.init = this.init.bind(this);	
 this.addGo = this.addGo.bind(this);	
@@ -172,7 +198,7 @@ this.addGo = this.addGo.bind(this);
 
 2. Add these lines to `componentDidMount(){...}` in `class Game extends React.Component{...}` in the `Game.js` in the `src/` folder:	
 
-```	
+```js	
 // for mouse coordinate
 this.rect = {};
 this.goBoardX = goBoard.offsetLeft;
@@ -183,7 +209,7 @@ this.init();
 
 3. Add these lines to `class Game extends React.Component{...}` in the `Game.js` in the `src/` folder:	
 
-```	
+```js	
 init() {
   var goBoard = document.getElementById('goBoard');
   
@@ -194,7 +220,7 @@ init() {
 
 4. Add these lines to `class Game extends React.Component{...}` in the `Game.js` in the `src/` folder:	
 
-```	
+```js	
 addGo(event){	
   // calculating exact mouse coordinates
   this.rect.x = event.pageX - this.goBoardX - 1;
@@ -204,7 +230,7 @@ addGo(event){
 
 5. Then `Game.js` in the `src/` folder should be like this:
 
-```
+```js
 import React from 'react';
 
 class Game extends React.Component {
@@ -264,12 +290,13 @@ export default Game;
 </p></details>
 
 ### Create black stones on the board when the user clicks the board
+
 <details><summary>CLICK TO SEE THE DETAILS</summary>	
 <p>	
   
 1. Set the radius of the stone to 25(you can change). So its diameter is 50(you can change). Add these lines in `constructor(props){...}` in the `Game.js` in the `src/` folder:
 
-```
+```js
 // the radius of stone
 this.stoneRadius = 25;
 // the diameter of stone
@@ -278,7 +305,7 @@ this.stoneDiameter = this.stoneRadius * 2;
 
 2. Add these lines to `addGo(event){...}` in the `Game.js` in the `src/` folder:
 
-```
+```js
 var goBoard = document.getElementById('goBoard');
 var context = goBoard.getContext('2d');
           
@@ -301,7 +328,7 @@ context.stroke();
   
 1. Gomoku starts with a black stone. (If you want to start with a white stone, set `false` instead of `true`) Add these lines to `constructor(props){...}` in the `Game.js` in the `src/` folder:
 
-```
+```js
 this.state = {
   blackStone: true    
 };
@@ -309,7 +336,7 @@ this.state = {
 
 2. Delete these lines in `addGo(event){...}` in the `Game.js` in the `src/` folder:
 
-```
+```js
 context.fillStyle = "black";
 context.fill();
 context.stroke();
@@ -317,7 +344,7 @@ context.stroke();
 
 3. Add these lines to `addGo(event){...}` in the `Game.js` in the `src/` folder:
 
-```
+```js
 // fill the color of stone:  black or white
 if (this.state.blackStone === true) {
   context.fillStyle = "black";
