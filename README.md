@@ -263,7 +263,7 @@ export default Game;
 ```
 </p></details>
 
-### Create black stones based on the location that the user clicked
+### Create black stones on the board when the user clicked the board
 <details><summary>CLICK TO SEE THE DETAILS</summary>	
 <p>	
   
