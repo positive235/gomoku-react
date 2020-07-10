@@ -261,6 +261,79 @@ class Game extends React.Component {
 
 export default Game;
 ```
+</p></details>
 
-</p>	
-</details>
+### Create black stones based on the location that the user clicked
+<details><summary>CLICK TO SEE THE DETAILS</summary>	
+<p>	
+  
+1. Set the radius of the stone to 25(you can change). So its diameter is 50(you can change). Add these lines in `constructor(props){...}` in the `Game.js` in the `src/` folder:
+
+```
+// the radius of stone
+this.stoneRadius = 25;
+// the diameter of stone
+this.stoneDiameter = this.stoneRadius * 2;
+```
+
+2. Add these lines to `addGo(event){...}` in the `Game.js` in the `src/` folder:
+
+```
+var goBoard = document.getElementById('goBoard');
+var context = goBoard.getContext('2d');
+          
+// draw stones based on thier calculated coordinates
+context.beginPath();
+context.arc(this.rect.x, this.rect.y, this.stoneRadius, 0, 2 * Math.PI);
+
+context.fillStyle = "black";
+context.fill();
+context.stroke();
+```
+
+3. Now you can see black stones on the board when you click the board.
+</p></details>
+
+### Switch stone's color (black -> white, OR white -> black) on each click
+
+<details><summary>CLICK TO SEE THE DETAILS</summary>	
+<p>
+  
+1. Gomoku starts with a black stone. (If you want to start with a white stone, set `false` instead of `true`) Add these lines to `constructor(props){...}` in the `Game.js` in the `src/` folder:
+
+```
+this.state = {
+  blackStone: true    
+};
+```
+
+2. Delete these lines in `addGo(event){...}` in the `Game.js` in the `src/` folder:
+
+```
+context.fillStyle = "black";
+context.fill();
+context.stroke();
+```
+
+3. Add these lines to `addGo(event){...}` in the `Game.js` in the `src/` folder:
+
+```
+// fill the color of stone:  black or white
+if (this.state.blackStone === true) {
+  context.fillStyle = "black";
+  context.fill();
+  context.stroke();
+  this.setState({
+    blackStone: false
+  });
+} else {
+  context.fillStyle = "white";
+  context.fill();
+  context.stroke();
+  this.setState({
+    blackStone: true
+  });
+}
+```
+
+</p></details>
