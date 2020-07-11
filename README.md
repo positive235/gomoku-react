@@ -396,3 +396,62 @@ if (this.rect.y % this.stoneDiameter > this.stoneRadius) {
 2. Then stones should put onto the intersections of vertical and horizontal lines.
 
 </p></details>
+
+### Avoid putting stones on the edges
+
+<details><summary>CLICK TO SEE THE DETAILS</summary>	
+<p>
+
+1. Add these lines to `addGo(event){...}` in `Game.js` in `src/` folder:
+
+```js
+if (this.rect.x > 0 && this.rect.x < 700 && this.rect.y > 0 && this.rect.y < 700) {...}
+```
+
+after these lines
+
+```js
+// calculating coordinates to put stones onto the proper places
+if (this.rect.x % this.stoneDiameter > this.stoneRadius) {
+  this.rect.x = (this.rect.x - this.rect.x % this.stoneDiameter) + this.stoneDiameter;
+} else {
+  this.rect.x -= this.rect.x % this.stoneDiameter;
+}
+
+if (this.rect.y % this.stoneDiameter > this.stoneRadius) {
+  this.rect.y = (this.rect.y - this.rect.y % this.stoneDiameter) + this.stoneDiameter;
+} else {
+  this.rect.y -= this.rect.y % this.stoneDiameter;
+}
+```
+
+2. Cut(or, copy and delete) these lines which is already in `addGo(event){...}` in `Game.js` in `src/` folder
+
+```js
+var goBoard = document.getElementById('goBoard');
+var context = goBoard.getContext('2d');
+          
+// draw stones based on thier calculated coordinates
+context.beginPath();
+context.arc(this.rect.x, this.rect.y, this.stoneRadius, 0, 2 * Math.PI);
+    
+// fill the color of stone:  black or white
+if (this.state.blackStone === true) {
+  context.fillStyle = "black";
+  context.fill();
+  context.stroke();
+  this.setState({
+    blackStone: false
+  });
+} else {
+  context.fillStyle = "white";
+  context.fill();
+  context.stroke();
+  this.setState({
+    blackStone: true
+  });
+```
+
+and paste them into `{...}` of `if (this.rect.x > 0 && this.rect.x < 700 && this.rect.y > 0 && this.rect.y < 700) {...}` in `addGo(event){...}` in `Game.js` in `src/` folder.
+
+</p></details>
