@@ -368,7 +368,7 @@ if (this.state.blackStone === true) {
 <details><summary>CLICK TO SEE THE DETAILS</summary>	
 <p>
 
-1. Below these lines,
+1. Below these lines
 
 ```js
 // calculating exact mouse coordinates
@@ -376,7 +376,7 @@ this.rect.x = event.pageX - this.goBoardX - 1;
 this.rect.y = event.pageY - this.goBoardY - 2;
 ```
 
-add these lines to `addGo(event){...}` in `Game.js` in `src/` folder:
+, add these lines to `addGo(event){...}` in `Game.js` in `src/` folder:
 
 ```js
 // calculating coordinates to put stones onto the proper places
