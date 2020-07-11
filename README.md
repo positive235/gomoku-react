@@ -17,9 +17,9 @@ npm i
 npm start
 ```
 
-## How to try (Writing in Progress)	
+## How to build (Writing in Progress)	
 
-### Setup for the tutorial	
+### Setup
 
 <details><summary>CLICK TO SEE THE DETAILS</summary>	
 <p>	
