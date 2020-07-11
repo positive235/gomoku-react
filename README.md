@@ -362,3 +362,37 @@ if (this.state.blackStone === true) {
 ```
 
 </p></details>
+
+### Put stones onto the intersections of vertical and horizontal lines
+
+<details><summary>CLICK TO SEE THE DETAILS</summary>	
+<p>
+
+1. Below these lines,
+
+```js
+// calculating exact mouse coordinates
+this.rect.x = event.pageX - this.goBoardX - 1;
+this.rect.y = event.pageY - this.goBoardY - 2;
+```
+
+add these lines to `addGo(event){...}` in `Game.js` in `src/` folder:
+
+```js
+// calculating coordinates to put stones onto the proper places
+if (this.rect.x % this.stoneDiameter > this.stoneRadius) {
+  this.rect.x = (this.rect.x - this.rect.x % this.stoneDiameter) + this.stoneDiameter;
+} else {
+  this.rect.x -= this.rect.x % this.stoneDiameter;
+}
+
+if (this.rect.y % this.stoneDiameter > this.stoneRadius) {
+  this.rect.y = (this.rect.y - this.rect.y % this.stoneDiameter) + this.stoneDiameter;
+} else {
+  this.rect.y -= this.rect.y % this.stoneDiameter;
+}
+```
+
+2. Then stones should put onto the intersections of vertical and horizontal lines.
+
+</p></details>
